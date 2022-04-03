@@ -102,6 +102,7 @@ function V3N:CreateWindow(WindowTitle, HubVersion)
 
     table.insert(V3N, WindowTitle)
 
+    local UILibrary = Instance.new("ScreenGui")
     local V3N_Library = Instance.new("Frame")
     local UICorner = Instance.new("UICorner")
     local SideBar = Instance.new("Frame")
@@ -145,10 +146,14 @@ function V3N:CreateWindow(WindowTitle, HubVersion)
     local BackBlur = Instance.new("Frame")
     local UICorner_11 = Instance.new("UICorner")
 
-    V3N:SetDraggable(SideBar, V3N_Library)
+    --Properties:
+
+    UILibrary.Name = "UILibrary"
+    UILibrary.Parent = game.CoreGui
+    UILibrary.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
     V3N_Library.Name = "V3N_Library"
-    V3N_Library.Parent = game.CoreGui
+    V3N_Library.Parent = UILibrary
     V3N_Library.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
     V3N_Library.BorderSizePixel = 0
     V3N_Library.Position = UDim2.new(0.5, -286, 0.5, -169)
@@ -180,7 +185,7 @@ function V3N:CreateWindow(WindowTitle, HubVersion)
     Title.BorderSizePixel = 0
     Title.Size = UDim2.new(1, 0, 0.563380301, 0)
     Title.Font = Enum.Font.Nunito
-    Title.Text = WindowTitle
+    Title.Text = "TITLE"
     Title.TextColor3 = Color3.fromRGB(115, 122, 255)
     Title.TextSize = 31.000
 
@@ -192,7 +197,7 @@ function V3N:CreateWindow(WindowTitle, HubVersion)
     Version.Position = UDim2.new(0, 0, 0.563380301, 0)
     Version.Size = UDim2.new(1, 0, 0.436619729, 0)
     Version.Font = Enum.Font.SourceSans
-    Version.Text = "Version: " .. HubVersion
+    Version.Text = "Version"
     Version.TextColor3 = Color3.fromRGB(211, 202, 255)
     Version.TextSize = 17.000
 
@@ -494,5 +499,3 @@ function V3N:CreateWindow(WindowTitle, HubVersion)
     UICorner_11.CornerRadius = UDim.new(0.0199999996, 0)
     UICorner_11.Parent = BackBlur
 end
-
-return V3N
