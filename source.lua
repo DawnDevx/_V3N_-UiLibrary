@@ -2,6 +2,7 @@ local V3N = {}
 
 function V3N:CreateWindow(WindowTitle, HubVersion)
 
+    WindowTitle = WindowTitle or "Error"
     HubVersion = HubVersion or "?"
 
     local V3N_Library = Instance.new("Frame")
@@ -82,7 +83,7 @@ function V3N:CreateWindow(WindowTitle, HubVersion)
     Title.BorderSizePixel = 0
     Title.Size = UDim2.new(1, 0, 0.563380301, 0)
     Title.Font = Enum.Font.Nunito
-    Title.Text = WindowTitle or "Error Loading"
+    Title.Text = WindowTitle
     Title.TextColor3 = Color3.fromRGB(115, 122, 255)
     Title.TextSize = 31.000
 
