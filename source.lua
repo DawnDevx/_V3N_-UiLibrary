@@ -51,7 +51,7 @@ function V3N:CreateWindow(WindowTitle, HubVersion)
     --Properties:
 
     V3N_Library.Name = "V3N_Library"
-    V3N_Library.Parent = game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
+    V3N_Library.Parent = game.CoreGui
     V3N_Library.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
     V3N_Library.BorderSizePixel = 0
     V3N_Library.Position = UDim2.new(0.5, -286, 0.5, -169)
