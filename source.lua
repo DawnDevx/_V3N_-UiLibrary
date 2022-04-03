@@ -1,9 +1,106 @@
 local V3N = {}
 
+local TweenSerice = game:GetService("TweenService")
+local TI = TweenInfo.new
+local InputService = game:GetService("UserInputService")
+local Run = game:GetService("RunService")
+
+local Utils = {}
+local Objects = {}
+
+function V3N:SetDraggable(Object, ToDrag)
+
+    ToDrag = ToDrag or Object
+
+    local Dragging = false
+    local DragInput, MousePos, FramePos
+
+    Object.InputBegan:Connect(function(Input)
+        if Input.UserInputType == Enum.UserInputState.MouseButton1 then
+            Dragging = true
+            MousePos = Input.Position
+            FramePos = ToDrag.Position
+
+            Input.Changed:Connect(function()
+                if Input.UserInputState == Enum.UserInputState.End then
+                    Dragging = false
+                end
+            end)
+        end
+    end)
+
+    Object.InputChanged:Connect(function(Input)
+        if Input.UserInputType == Enum.UserInputType.MouseMovement then
+            DragInput = Input
+        end
+    end)
+
+    UserInputService.InputChanged:Connect(function(Input)
+        if Input == DragInput and Dragging then
+            local Delta = Input.Position
+            ToDrag.Position = UDim2.new(FramePos.X.Scale, FramePos.X.Offset + Delta.X, FramePos.Y.Scale, FramePos.Y.Offset + Delta.Y)
+        end
+    end)
+
+end
+
+function Utils:CreateTween(Object, Properties, Time, ...)
+   TweenService:Create(Object, TI(Time, ...), Properties):Play() 
+end
+
+function GenerateRandomString()
+    local Length = math.random(10, 20)
+    local Array = {}
+    for i = 1, Length do
+        Array[i] = string.char(math.random(32, 126))
+    end
+    return table.concat(Array)
+end
+
+local CurrentLibraryThemes = {
+    
+}
+local LibraryThemeStyles = {
+
+}
+
+local LibrarySettings = {
+
+}
+
+local LibraryName = GenerateRandomString()
+
+__COREGUI__ = game:GetService("CoreGui")
+__PARENT__ = nil
+
+if (not is_sirhurt_closure) and (syn and syn.protect_gui) then
+	local Main = Instance.new("ScreenGui")
+	Main.Name = randomString()
+	syn.protect_gui(Main)
+	Main.Parent = __COREGUI__
+	__PARENT__ = Main
+elseif get_hidden_gui or gethui then
+	local hiddenUI = get_hidden_gui or gethui
+	local Main = Instance.new("ScreenGui")
+	Main.Name = randomString()
+	Main.Parent = hiddenUI()
+	__PARENT__ = Main
+elseif COREGUI:FindFirstChild('RobloxGui') then
+	PARENT = __COREGUI__.RobloxGui
+else
+	local Main = Instance.new("ScreenGui")
+	Main.Name = randomString()
+	Main.Parent = __COREGUI__
+	__PARENT__ = Main
+end
+
 function V3N:CreateWindow(WindowTitle, HubVersion)
 
     WindowTitle = WindowTitle or "Error"
     HubVersion = HubVersion or "?"
+    local SelectedTab
+
+    table.insert(V3N, WindowTitle)
 
     local V3N_Library = Instance.new("Frame")
     local UICorner = Instance.new("UICorner")
@@ -48,7 +145,7 @@ function V3N:CreateWindow(WindowTitle, HubVersion)
     local BackBlur = Instance.new("Frame")
     local UICorner_11 = Instance.new("UICorner")
 
-    --Properties:
+    V3N:SetDraggable(SideBar, V3N_Library)
 
     V3N_Library.Name = "V3N_Library"
     V3N_Library.Parent = game.CoreGui
