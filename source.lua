@@ -35,7 +35,7 @@ function V3N:SetDraggable(Object, ToDrag)
         end
     end)
 
-    UserInputService.InputChanged:Connect(function(Input)
+    InputService.InputChanged:Connect(function(Input)
         if Input == DragInput and Dragging then
             local Delta = Input.Position
             ToDrag.Position = UDim2.new(FramePos.X.Scale, FramePos.X.Offset + Delta.X, FramePos.Y.Scale, FramePos.Y.Offset + Delta.Y)
