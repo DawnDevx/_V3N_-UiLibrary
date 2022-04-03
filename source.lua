@@ -16,7 +16,7 @@ function V3N:SetDraggable(Object, ToDrag)
     local DragInput, MousePos, FramePos
 
     Object.InputBegan:Connect(function(Input)
-        if Input.UserInputType == Enum.UserInputState.MouseButton1 then
+        if Input.UserInputType == Enum.UserInputState.MouseButton1Down then
             Dragging = true
             MousePos = Input.Position
             FramePos = ToDrag.Position
@@ -146,9 +146,9 @@ function V3N:CreateWindow(WindowTitle, HubVersion)
     local BackBlur = Instance.new("Frame")
     local UICorner_11 = Instance.new("UICorner")
 
-    --Properties:
+    V3N:SetDraggable(Title, V3N_Library)
 
-    UILibrary.Name = "UILibrary"
+    UILibrary.Name = LibraryName
     UILibrary.Parent = game.CoreGui
     UILibrary.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
@@ -185,7 +185,7 @@ function V3N:CreateWindow(WindowTitle, HubVersion)
     Title.BorderSizePixel = 0
     Title.Size = UDim2.new(1, 0, 0.563380301, 0)
     Title.Font = Enum.Font.Nunito
-    Title.Text = "TITLE"
+    Title.Text = WindowTitle
     Title.TextColor3 = Color3.fromRGB(115, 122, 255)
     Title.TextSize = 31.000
 
@@ -197,7 +197,7 @@ function V3N:CreateWindow(WindowTitle, HubVersion)
     Version.Position = UDim2.new(0, 0, 0.563380301, 0)
     Version.Size = UDim2.new(1, 0, 0.436619729, 0)
     Version.Font = Enum.Font.SourceSans
-    Version.Text = "Version"
+    Version.Text = HubVersion
     Version.TextColor3 = Color3.fromRGB(211, 202, 255)
     Version.TextSize = 17.000
 
