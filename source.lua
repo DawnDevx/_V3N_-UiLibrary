@@ -75,21 +75,21 @@ __PARENT__ = nil
 
 if (not is_sirhurt_closure) and (syn and syn.protect_gui) then
 	local Main = Instance.new("ScreenGui")
-	Main.Name = randomString()
+	Main.Name = GenerateRandomString()
 	syn.protect_gui(Main)
 	Main.Parent = __COREGUI__
 	__PARENT__ = Main
 elseif get_hidden_gui or gethui then
 	local hiddenUI = get_hidden_gui or gethui
 	local Main = Instance.new("ScreenGui")
-	Main.Name = randomString()
+	Main.Name = GenerateRandomString()
 	Main.Parent = hiddenUI()
 	__PARENT__ = Main
 elseif COREGUI:FindFirstChild('RobloxGui') then
 	PARENT = __COREGUI__.RobloxGui
 else
 	local Main = Instance.new("ScreenGui")
-	Main.Name = randomString()
+	Main.Name = GenerateRandomString()
 	Main.Parent = __COREGUI__
 	__PARENT__ = Main
 end
