@@ -1,6 +1,6 @@
 local V3N = {}
 
-function V3N.CreateWindow(WindowTitle, HubVersion)
+function V3N:CreateWindow(WindowTitle, HubVersion)
     local V3N_Library = Instance.new("Frame")
     local UICorner = Instance.new("UICorner")
     local SideBar = Instance.new("Frame")
