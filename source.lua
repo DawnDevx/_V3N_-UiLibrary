@@ -1,6 +1,9 @@
 local V3N = {}
 
 function V3N:CreateWindow(WindowTitle, HubVersion)
+
+    HubVersion = HubVersion or "?"
+
     local V3N_Library = Instance.new("Frame")
     local UICorner = Instance.new("UICorner")
     local SideBar = Instance.new("Frame")
@@ -91,7 +94,7 @@ function V3N:CreateWindow(WindowTitle, HubVersion)
     Version.Position = UDim2.new(0, 0, 0.563380301, 0)
     Version.Size = UDim2.new(1, 0, 0.436619729, 0)
     Version.Font = Enum.Font.SourceSans
-    Version.Text = "Version: " .. HubVersion or "Version: ?"
+    Version.Text = "Version: " .. HubVersion
     Version.TextColor3 = Color3.fromRGB(211, 202, 255)
     Version.TextSize = 17.000
 
